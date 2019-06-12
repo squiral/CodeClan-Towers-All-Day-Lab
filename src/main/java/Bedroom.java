@@ -18,4 +18,11 @@ public class Bedroom {
         return this.roomNumber;
     }
 
+    public int countGuests() {
+        return this.guests.size();
+    }
+
+    public void addGuest(Guest guest) {
+        this.guests.add(guest);
+    }
 }
