@@ -6,12 +6,14 @@ public class Bedroom {
     private int capacity;
     private ArrayList<Guest> guests;
     private String type;
+    private int rate;
 
     public Bedroom (int roomNumber, int capacity, String type){
         this.roomNumber = roomNumber;
         this.capacity = capacity;
         this.guests = new ArrayList<Guest>();
         this.type = type;
+        this.rate = 100;
     }
 
     public int getNumber(){
@@ -28,5 +30,9 @@ public class Bedroom {
 
     public void removeGuests() {
         this.guests.clear();
+    }
+
+    public int getRate() {
+        return this.rate;
     }
 }

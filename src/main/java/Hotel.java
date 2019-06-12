@@ -32,8 +32,10 @@ public class Hotel {
     }
 
     public void checkInGuestInBedroom(int roomNumber, Guest guest) {
-        Bedroom room = this.findBedroom(roomNumber);
-        room.addGuest(guest);
+        Bedroom room = this.findVacantRoom(roomNumber);
+        if (room != null) {
+            room.addGuest(guest);
+        }
     }
 
 
@@ -72,5 +74,34 @@ public class Hotel {
     public void checkOutGuestFromConferenceRoom(String name) {
         ConferenceRoom conferenceRoom = this.findConferenceRoom(name);
         conferenceRoom.removeGuests();
+    }
+
+    public Booking createBedroomBooking(int numberOfNights, int roomNumber) {
+        Bedroom bedroom = this.findBedroom(roomNumber);
+        Booking booking = new Booking(numberOfNights, bedroom);
+        return booking;
+    }
+
+    public ArrayList<Bedroom> getVacantRooms() {
+        ArrayList<Bedroom> vacantBedrooms = new ArrayList<Bedroom>();
+        for (Bedroom bedroom : this.bedrooms) {
+            if (bedroom.countGuests() == 0) {
+                vacantBedrooms.add(bedroom);
+            }
+        }
+
+        return vacantBedrooms;
+    }
+
+    public Bedroom findVacantRoom(int roomNumber){
+        ArrayList<Bedroom> vacantBedrooms = this.getVacantRooms();
+        for (Bedroom bedroom : vacantBedrooms){
+            if (bedroom.getNumber() == roomNumber) {
+                return bedroom;
+            }
+        }
+
+        return null;
+
     }
 }
