@@ -16,5 +16,5 @@ public class GuestTest {
     public void canGetName(){
         assertEquals("String", guest.getName());
     }
-    
+
 }
