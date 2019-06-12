@@ -17,4 +17,16 @@ public class ConferenceRoom {
     public int countGuests() {
         return this.guests.size();
     }
+
+    public String getName() {
+        return this.name;
+    }
+
+    public void addGuest(Guest guest) {
+        this.guests.add(guest);
+    }
+
+    public void removeGuests() {
+        this.guests.clear();
+    }
 }

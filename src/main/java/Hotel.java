@@ -37,8 +37,40 @@ public class Hotel {
     }
 
 
-    public int guestListOfRoom(int roomNumber) {
+    public int countGuestsInBedroom(int roomNumber) {
         Bedroom room = this.findBedroom(roomNumber);
         return room.countGuests();
+    }
+
+    public ConferenceRoom findConferenceRoom(String name){
+
+        for (ConferenceRoom conferenceRoom : this.conferenceRooms){
+            if (conferenceRoom.getName() == name){
+                return conferenceRoom;
+            }
+        }
+
+        return null;
+
+    }
+
+    public void checkInGuestIntoConferenceRoom(String name, Guest guest) {
+        ConferenceRoom conferenceRoom= this.findConferenceRoom(name);
+        conferenceRoom.addGuest(guest);
+    }
+
+    public int countGuestsInConferenceRoom(String name) {
+        ConferenceRoom conferenceRoom = this.findConferenceRoom(name);
+        return conferenceRoom.countGuests();
+    }
+
+    public void checkOutGuestFromBedroom(int roomNumber) {
+        Bedroom bedroom = this.findBedroom(roomNumber);
+        bedroom.removeGuests();
+    }
+
+    public void checkOutGuestFromConferenceRoom(String name) {
+        ConferenceRoom conferenceRoom = this.findConferenceRoom(name);
+        conferenceRoom.removeGuests();
     }
 }

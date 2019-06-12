@@ -25,4 +25,8 @@ public class Bedroom {
     public void addGuest(Guest guest) {
         this.guests.add(guest);
     }
+
+    public void removeGuests() {
+        this.guests.clear();
+    }
 }
